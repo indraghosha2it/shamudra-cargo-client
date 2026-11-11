@@ -1,0 +1,169 @@
+import TermsOfService from "@/components/footer/terms";
+import React from "react";
+
+// 🔹 SEO metadata for Terms of Service
+export const metadata = {
+  title: "Terms of Service | Samudera Traffic Co., Ltd. Group",
+  description:
+    "Read the Terms of Service for Samudera Traffic Co., Ltd. Group. Understand our legal framework for international freight forwarding, logistics management, and Samudera Cargo operations across Thailand, China, USA, UK & Canada.",
+  keywords: [
+    "Samudera Traffic Co., Ltd.",
+    "Terms of Service",
+    "Terms and Conditions",
+    "Legal Terms",
+    "Freight Forwarding Terms",
+    "Logistics Agreement",
+    "Samudera Cargo Terms",
+    "Shipping Terms",
+    "Service Agreement",
+    "User Agreement",
+  ],
+  alternates: {
+    canonical: "http://localhost:3000/terms-of-service",
+  },
+  openGraph: {
+    title: "Terms of Service | Samudera Traffic Co., Ltd. Group",
+    description:
+      "Read the Terms of Service for Samudera Traffic Co., Ltd. Group. Understand our legal framework for international freight forwarding, logistics management, and Samudera Cargo operations.",
+    url: "http://localhost:3000/terms-of-service",
+    siteName: "Samudera Traffic Co., Ltd. Group",
+    images: [
+      {
+        url: "/og-terms-of-service.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Samudera Traffic Co., Ltd. Group - Terms of Service",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms of Service | Samudera Traffic Co., Ltd. Group",
+    description:
+      "Read the Terms of Service for Samudera Traffic Co., Ltd. Group. Understand our legal framework for international freight forwarding.",
+    images: ["/og-terms-of-service.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+export default function Page() {
+  return (
+    <>
+      <TermsOfService />
+
+      {/* 🔹 Schema Markup for Terms of Service Page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: "Terms of Service",
+            description:
+              "Read the Terms of Service for Samudera Traffic Co., Ltd. Group. Understand our legal framework for international freight forwarding, logistics management, and Samudera Cargo operations across Thailand, China, USA, UK & Canada.",
+            url: "http://localhost:3000/terms-of-service",
+            publisher: {
+              "@type": "Organization",
+              name: "Samudera Traffic Co., Ltd. Group",
+              url: "http://localhost:3000",
+              logo: "http://localhost:3000/logo.png",
+            },
+            mainEntity: {
+              "@type": "WebPageElement",
+              name: "Terms of Service Document",
+              description: "Legal terms and conditions for logistics services",
+            },
+            dateModified: "2026-02-02",
+          }),
+        }}
+      />
+
+      {/* 🔹 Breadcrumb Schema for Terms of Service */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "http://localhost:3000",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Terms of Service",
+                item: "http://localhost:3000/terms-of-service",
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* 🔹 Organization Schema for Legal Info */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Samudera Traffic Co., Ltd. Group",
+            url: "http://localhost:3000",
+            logo: "http://localhost:3000/logo.png",
+            description: "Leading logistics and supply chain solutions provider",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "Green Tower, 9th floor, 3656/27-28 Rama IV Road",
+              addressLocality: "Columbia",
+              addressRegion: "MD",
+              postalCode: "21045",
+              addressCountry: "USA",
+            },
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+66977830395",
+              contactType: "legal",
+              email: "info@samuderathai.com",
+              availableLanguage: ["English"],
+            },
+            legalName: "Samudera Traffic Co., Ltd. Group",
+            foundingDate: "2009",
+            termsOfService: "http://localhost:3000/terms-of-service",
+          }),
+        }}
+      />
+
+      {/* 🔹 Terms of Service Schema (Legal Document) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "TermsOfService",
+            name: "Terms of Service of Samudera Traffic Co., Ltd. Group",
+            description:
+              "These Terms of Service govern the use of Samudera Traffic Co., Ltd. Group's freight forwarding platform and logistics services.",
+            url: "http://localhost:3000/terms-of-service",
+            lastReviewed: "2026-02-02",
+            inLanguage: "en-US",
+            jurisdiction: "USA",
+            applicableLegislation: ["UCC", "CISG"],
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+66977830395",
+              email: "info@samuderathai.com",
+              contactType: "legal support",
+            },
+          }),
+        }}
+      />
+    </>
+  );
+}

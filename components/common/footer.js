@@ -1,0 +1,233 @@
+"use client";
+
+import { motion } from 'framer-motion';
+import { Phone, Mail, MapPin, ChevronRight, Facebook, Twitter, Linkedin, Instagram, Globe } from 'lucide-react';
+import Link from 'next/link';
+import { useSiteSettings } from '@/components/context/SiteSettingsProvider';
+
+const Footer = () => {
+  const site = useSiteSettings();
+
+  const footerSections = [
+    {
+      title: "Your Cargo Partner",
+      content: (
+        <div className="space-y-1.5">
+          {/* Head Office - Ultra Compact */}
+      <div className=' mb-4 '>
+        <div className="flex items-center gap-2 mb-1">
+          <img src={site.logo} alt={site.companyName} className="md:w-14 md:h-10 w-10 h-10 mb-1 object-contain" />
+          <p className="text-gray-900 text-[9px] sm:text-sm md:text-xl leading-tight font-bold">{site.companyName} </p>
+        </div>
+        <div>
+
+        <h3 className="font-semibold text-third text-[10px] sm:text-sm leading-tight mb-2">
+          HEAD OFFICE
+        </h3>
+        <p className="text-gray-600 text-[9px] sm:text-sm leading-tight whitespace-pre-line">
+          {site.address}
+        </p>
+      </div>
+
+      {/* Phone & Email - Side by side, no gap */}
+      <div className="flex flex-wrap items-center gap-x-1 mb-4 sm:mb-1">
+        <a href={`tel:${site.phone}`} className="text-gray-600 text-[9px] sm:text-sm hover:text-primary transition-colors inline-flex items-center gap-0.5">
+          <Phone className="w-2.5 h-2.5 sm:w-4 sm:h-4" />
+          {site.phone}
+        </a>
+      </div>
+
+      {site.fax ? (
+      <div className="flex flex-wrap items-center gap-x-1 mb-4 sm:mb-1">
+        <span className="text-gray-600 text-[9px] sm:text-sm inline-flex items-center gap-0.5">
+          Fax: {site.fax}
+        </span>
+      </div>
+      ) : null}
+
+      <div className="flex flex-wrap items-center gap-x-1">
+        <a href={`mailto:${site.email}`} className="text-gray-600 text-[9px] sm:text-sm hover:text-primary transition-colors inline-flex items-center gap-0.5 truncate max-w-[180px] sm:max-w-none">
+          <Mail className="w-2.5 h-2.5 sm:w-4 sm:h-4 flex-shrink-0" />
+          <span className="truncate">{site.email}</span>
+        </a>
+      </div>
+      </div>
+    </div>
+  )
+},
+    {
+      title: "Links",
+      links: [
+        { name: "Our Company", path: "/about/company" },
+        { name: "History", path: "/about/history" },
+        { name: "Mission & Vision", path: "/footer/mission-vission" },
+        { name: "Global Network", path: "/contact" },
+        { name: "Projects", path: "/about/project" }
+      ]
+    },
+    {
+      title: "Essentials",
+      links: [
+        { name: "Services", path: "/service" },
+        { name: "Industries", path: "/industries" },
+        { name: "Booking", path: "/footer/booking" },
+        { name: "Tracking", path: "/tracking-number" },
+        { name: "Why Us", path: "/footer/choose" },
+      ]
+    },
+    {
+      title: "Snapshots",
+      content: (
+        <div>
+          <div className="grid grid-cols-3 gap-1 sm:gap-2">
+            {[
+              { id: 1, src: "http://localhost:8000/uploads/images/history (2).jpg", alt: "Gallery 1", path: "http://localhost:8000/uploads/images/history (2).jpg" },
+              { id: 2, src: "http://localhost:8000/uploads/images/history (5).jpg", alt: "Gallery 2", path: "http://localhost:8000/uploads/images/history (5).jpg" },
+              { id: 3, src: "http://localhost:8000/uploads/images/serviceBanner.jpg", alt: "Gallery 3", path: "http://localhost:8000/uploads/images/serviceBanner.jpg" },
+              { id: 4, src: "http://localhost:8000/uploads/images/project (7).jpg", alt: "Gallery 4", path: "http://localhost:8000/uploads/images/project (7).jpg" },
+              { id: 5, src: "http://localhost:8000/uploads/images/service3.jpg", alt: "Gallery 5", path: "http://localhost:8000/uploads/images/service3.jpg" },
+              { id: 6, src: "http://localhost:8000/uploads/images/packaging.jpg", alt: "Gallery 6", path: "http://localhost:8000/uploads/images/packaging.jpg" }
+            ].map((item) => (
+              <Link href={item.path} key={item.id}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="aspect-square bg-primary/10 rounded-lg overflow-hidden cursor-pointer"
+                >
+                  <img 
+                    src={item.src} 
+                    alt={item.alt}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = "https://via.placeholder.com/150?text=Gallery";
+                    }}
+                  />
+                </motion.div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )
+    }
+  ];
+
+  return (
+    <footer className="bg-secondary text-third relative overflow-hidden -z-8"> 
+
+      {/* Main Footer */}
+      <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 py-3 sm:py-4 lg:py-6">
+        {/* Mobile: 2 columns exact, Desktop: 4 columns */}
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 lg:grid-cols-4 lg:gap-12">
+          {/* First row - Contact Info & Links */}
+          <div className="col-span-1">
+            <h2 className="text-sm sm:text-base lg:text-lg font-bold mb-3 sm:mb-4 lg:mb-6 relative inline-block">
+              {footerSections[0].title}
+              <motion.div
+                className="absolute -bottom-2 left-0 h-0.5 rounded-full bg-primary" 
+                initial={{ width: 0 }}
+                animate={{ width: '60%' }}
+                transition={{ delay: 0.1 }}
+              />
+            </h2>
+            {footerSections[0].content}
+          </div>
+
+          <div className="col-span-1">
+            <h2 className="text-sm sm:text-base lg:text-lg font-bold mb-3 sm:mb-4 lg:mb-6 relative inline-block">
+              {footerSections[1].title}
+              <motion.div
+                className="absolute -bottom-2 left-0 h-0.5 rounded-full bg-primary" 
+                initial={{ width: 0 }}
+                animate={{ width: '60%' }}
+                transition={{ delay: 0.2 }}
+              />
+            </h2>
+            <ul className="space-y-1.5 sm:space-y-0.5 lg:space-y-4">
+              {footerSections[1].links.map((link) => (
+                <motion.li
+                  key={link.name}
+                  whileHover={{ x: 5 }}
+                  className="text-[10px] sm:text-xs lg:text-sm"
+                >
+                  <Link
+                    href={link.path}
+                    className="text-gray-600 hover:text-primary transition-colors inline-flex items-center gap-1 lg:gap-2"
+                  >
+                    <ChevronRight className="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 text-primary" />
+                    {link.name}
+                  </Link>
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Second row - Essentials & Gallery */}
+          <div className="col-span-1">
+            <h2 className="text-sm sm:text-base lg:text-lg font-bold mb-3 sm:mb-4 lg:mb-6 relative inline-block">
+              {footerSections[2].title}
+              <motion.div
+                className="absolute -bottom-2 left-0 h-0.5 rounded-full bg-primary" 
+                initial={{ width: 0 }}
+                animate={{ width: '60%' }}
+                transition={{ delay: 0.3 }}
+              />
+            </h2>
+            <ul className="space-y-1.5 sm:space-y-2 lg:space-y-4">
+              {footerSections[2].links.map((link) => (
+                <motion.li
+                  key={link.name}
+                  whileHover={{ x: 5 }}
+                  className="text-[10px] sm:text-xs lg:text-sm"
+                >
+                  <Link
+                    href={link.path}
+                    className="text-gray-600 hover:text-primary transition-colors inline-flex items-center gap-1 lg:gap-2"
+                  >
+                    <ChevronRight className="w-2 h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 text-primary" />
+                    {link.name}
+                  </Link>
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="col-span-1">
+            <h2 className="text-sm sm:text-base lg:text-lg font-bold mb-3 sm:mb-4 lg:mb-6 relative inline-block">
+              {footerSections[3].title}
+              <motion.div
+                className="absolute -bottom-2 left-0 h-0.5 rounded-full bg-primary" 
+                initial={{ width: 0 }}
+                animate={{ width: '60%' }}
+                transition={{ delay: 0.4 }}
+              />
+            </h2>
+            {footerSections[3].content}
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          className="mt-4 sm:mt-5 lg:mt-6 pt-3 sm:pt-4 border-t border-primary/10 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4"
+        >
+          <p className="text-gray-600 text-[8px] sm:text-xs lg:text-sm text-center md:text-left">
+            © {new Date().getFullYear()} {site.companyName}. All rights reserved.
+          </p>
+          
+          <div className="flex gap-3 sm:gap-4 lg:gap-6 text-[8px] sm:text-xs lg:text-sm">
+            <Link href="/footer/privacy-policy" className="text-gray-600 hover:text-primary transition-colors">
+              Privacy
+            </Link>
+            <Link href="/footer/terms" className="text-gray-600 hover:text-primary transition-colors">
+              Terms
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

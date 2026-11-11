@@ -1,0 +1,150 @@
+import Contact from "@/components/contact";
+import React from "react";
+
+// 🔹 SEO metadata for Contact Us
+export const metadata = {
+  title: "Contact Us | Samudera Traffic Co., Ltd. Group",
+  description:
+    "Get in touch with Samudera Traffic Co., Ltd. Group for all your shipping and logistics needs. Contact our support team for inquiries about sea freight, air freight, trucking, and multimodal shipping solutions.",
+  keywords: [
+    "Samudera Traffic Co., Ltd.",
+    "Contact Us",
+    "Logistics Support",
+    "Shipping Inquiries",
+    "Freight Services",
+    "Customer Support",
+    "Logistics Company Contact",
+    "Shipping Company",
+    "Cargo Services",
+    "Transportation Solutions",
+  ],
+  alternates: {
+    canonical: "http://localhost:3000/contact",
+  },
+  openGraph: {
+    title: "Contact Us | Samudera Traffic Co., Ltd. Group",
+    description:
+      "Get in touch with Samudera Traffic Co., Ltd. Group for all your shipping and logistics needs. Contact our support team for inquiries about sea freight, air freight, trucking, and multimodal shipping solutions.",
+    url: "http://localhost:3000/contact",
+    siteName: "Samudera Traffic Co., Ltd. Group",
+    images: [
+      {
+        url: "/og-contact.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Samudera Traffic Co., Ltd. Group - Contact Us",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Us | Samudera Traffic Co., Ltd. Group",
+    description:
+      "Get in touch with Samudera Traffic Co., Ltd. Group for all your shipping and logistics needs. Contact our support team for inquiries.",
+    images: ["/og-contact.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+export default function Page() {
+  return (
+    <>
+      <Contact />
+
+      {/* 🔹 Schema Markup for Contact Page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            name: "Contact Us",
+            description:
+              "Get in touch with Samudera Traffic Co., Ltd. Group for all your shipping and logistics needs. Contact our support team for inquiries about sea freight, air freight, trucking, and multimodal shipping solutions.",
+            url: "http://localhost:3000/contact",
+            publisher: {
+              "@type": "Organization",
+              name: "Samudera Traffic Co., Ltd. Group",
+              url: "http://localhost:3000",
+              logo: "http://localhost:3000/logo.png",
+            },
+            mainEntity: {
+              "@type": "Organization",
+              name: "Samudera Traffic Co., Ltd. Group",
+              contactPoint: [
+                {
+                  "@type": "ContactPoint",
+                  telephone: "+66977830395",
+                  contactType: "customer service",
+                  email: "info@samuderathai.com",
+                  availableLanguage: ["English"],
+                  contactOption: "TollFree",
+                  areaServed: "Worldwide",
+                },
+                {
+                  "@type": "ContactPoint",
+                  telephone: "+66977830395",
+                  contactType: "sales",
+                  email: "info@samuderathai.com",
+                  availableLanguage: ["English"],
+                },
+                {
+                  "@type": "ContactPoint",
+                  telephone: "+66977830395",
+                  contactType: "technical support",
+                  email: "info@samuderathai.com",
+                  availableLanguage: ["English"],
+                },
+              ],
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Green Tower, 9th floor, 3656/27-28 Rama IV Road",
+                addressLocality: "Klongton-Klong Toey",
+                addressRegion: "Bangkok",
+                postalCode: "10110",
+                addressCountry: "Thailand",
+              },
+              openingHoursSpecification: [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                  opens: "07:00",
+                  closes: "22:00",
+                },
+              ],
+            },
+          }),
+        }}
+      />
+
+      {/* 🔹 Breadcrumb Schema for Contact */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "http://localhost:3000",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Contact Us",
+                item: "http://localhost:3000/contact",
+              },
+            ],
+          }),
+        }}
+      />
+    </>
+  );
+}

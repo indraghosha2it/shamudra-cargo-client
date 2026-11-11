@@ -1,0 +1,169 @@
+import PrivacyPolicy from "@/components/footer/policy";
+import React from "react";
+
+// 🔹 SEO metadata for Privacy Policy
+export const metadata = {
+  title: "Privacy Policy | Samudera Traffic Co., Ltd. Group",
+  description:
+    "Read our Privacy Policy to understand how Samudera Traffic Co., Ltd. Group collects, uses, and protects your personal information. Learn about data security, your rights, and our commitment to privacy.",
+  keywords: [
+    "Samudera Traffic Co., Ltd.",
+    "Privacy Policy",
+    "Data Protection",
+    "Information Security",
+    "Privacy Statement",
+    "Data Privacy",
+    "GDPR Compliance",
+    "Personal Data",
+    "Cookie Policy",
+    "Privacy Rights",
+  ],
+  alternates: {
+    canonical: "http://localhost:3000/privacy-policy",
+  },
+  openGraph: {
+    title: "Privacy Policy | Samudera Traffic Co., Ltd. Group",
+    description:
+      "Read our Privacy Policy to understand how Samudera Traffic Co., Ltd. Group collects, uses, and protects your personal information. Learn about data security and your privacy rights.",
+    url: "http://localhost:3000/privacy-policy",
+    siteName: "Samudera Traffic Co., Ltd. Group",
+    images: [
+      {
+        url: "/og-privacy-policy.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Samudera Traffic Co., Ltd. Group - Privacy Policy",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy | Samudera Traffic Co., Ltd. Group",
+    description:
+      "Read our Privacy Policy to understand how Samudera Traffic Co., Ltd. Group collects, uses, and protects your personal information.",
+    images: ["/og-privacy-policy.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+export default function Page() {
+  return (
+    <>
+      <PrivacyPolicy />
+
+      {/* 🔹 Schema Markup for Privacy Policy Page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: "Privacy Policy",
+            description:
+              "Read our Privacy Policy to understand how Samudera Traffic Co., Ltd. Group collects, uses, and protects your personal information. Learn about data security, your rights, and our commitment to privacy.",
+            url: "http://localhost:3000/privacy-policy",
+            publisher: {
+              "@type": "Organization",
+              name: "Samudera Traffic Co., Ltd. Group",
+              url: "http://localhost:3000",
+              logo: "http://localhost:3000/logo.png",
+            },
+            mainEntity: {
+              "@type": "WebPageElement",
+              name: "Privacy Policy Document",
+              description: "Comprehensive privacy policy outlining data collection, usage, and protection practices",
+            },
+            dateModified: "2026-03-10",
+          }),
+        }}
+      />
+
+      {/* 🔹 Breadcrumb Schema for Privacy Policy */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "http://localhost:3000",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Privacy Policy",
+                item: "http://localhost:3000/privacy-policy",
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* 🔹 Organization Schema for Legal Info */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Samudera Traffic Co., Ltd. Group",
+            url: "http://localhost:3000",
+            logo: "http://localhost:3000/logo.png",
+            description: "Leading logistics and supply chain solutions provider",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "Green Tower, 9th floor, 3656/27-28 Rama IV Road",
+              addressLocality: "Columbia",
+              addressRegion: "MD",
+              postalCode: "21045",
+              addressCountry: "USA",
+            },
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+66977830395",
+              contactType: "privacy",
+              email: "info@samuderathai.com",
+              availableLanguage: ["English"],
+            },
+            legalName: "Samudera Traffic Co., Ltd. Group",
+            foundingDate: "2009",
+            privacyPolicy: "http://localhost:3000/privacy-policy",
+          }),
+        }}
+      />
+
+      {/* 🔹 Privacy Policy Schema (Legal Document) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "PrivacyPolicy",
+            name: "Privacy Policy of Samudera Traffic Co., Ltd. Group",
+            description:
+              "This Privacy Policy describes how Samudera Traffic Co., Ltd. Group collects, uses, and protects personal information of its customers and website visitors.",
+            url: "http://localhost:3000/privacy-policy",
+            lastReviewed: "2026-03-10",
+            inLanguage: "en-US",
+            jurisdiction: "USA",
+            legislation: ["GDPR", "CCPA"],
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+66977830395",
+              email: "info@samuderathai.com",
+              contactType: "privacy officer",
+            },
+          }),
+        }}
+      />
+    </>
+  );
+}
